@@ -109,11 +109,17 @@ contract VotingAuditDebot is Debot {
 /*
     votingAudits
 */
-
+uint128 userBalance;
     function preSstart(address curPart) public {
         m_participant = curPart;
+        Sdk.getBalance(tvm.functionId(getBalanc), m_participant);
+
+    }
+    function getBalanc(uint128 nanotokens) public {
+        userBalance = nanotokens;
         start();
     }
+
     function start() public functionID(0x01) override {
 
         optional(uint256) pubkey;
@@ -523,14 +529,18 @@ bool amot;
     }
 
     function membersMenu() public {
+
+        Terminal.print(0,format("Your balance: {}",userBalance));
+
         Menu.select("Action Team menu", "", [
             MenuItem("Action team", "",tvm.functionId(isActionTeamMemberCheck)),
-            MenuItem("", "Collator", tvm.functionId(goToCLdebot)),
-//                        MenuItem("", "Validator", tvm.functionId(getBalanceOf)),
+            MenuItem("Collator", "", tvm.functionId(goToCLdebot)),
+            MenuItem("Validator", "", tvm.functionId(onValidation)),
             MenuItem("return to main menu", "", tvm.functionId(mainMenu)),
             MenuItem("Quit", "", 0)
             ]);
     }
+
 
 
 

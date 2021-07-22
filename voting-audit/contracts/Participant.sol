@@ -239,6 +239,21 @@ contract Participant is IParticipant {
 		walletsDC.push(walletDeAudit);
 	}
 
+	function getCurActivity(uint256 curLaunchedDeAudit) public view returns (
+			bool reg;
+			uint8 atype;
+			address[] act4Arr;
+			address wallet;
+			address curDAactiv;
+		) {
+			Activity curActiv = activities[curLaunchedDeAudit];
+			reg = curActiv.reg;
+			atype = curActiv.atype;
+			act4Arr = curActiv.act4Arr;
+			wallet = curActiv.wallet;
+			curDAactiv = curLaunchedDeAudit;
+	}
+
 	// Function for get this contract TON gramms balance
 	function thisBalance() private inline pure returns (uint128) {
 		return address(this).balance;

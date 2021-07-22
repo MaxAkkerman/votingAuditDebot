@@ -326,11 +326,11 @@ contract VotingAuditDebotACTMmenu is Debot {
     function fCD(uint32 index) public {
         fetchCD(testDAD);
         CLmenu();
-
     }
     function CLmenu() public {
         Menu.select("Welcome to CL menu", "", [
             MenuItem("Fetch data", "",tvm.functionId(pstart)),
+            MenuItem("show user data", "",tvm.functionId(showUserData)),
             MenuItem("Fetch VC", "",tvm.functionId(fVC)),
             MenuItem("Fetch CD", "",tvm.functionId(fCD)),
             MenuItem("add collation", "", tvm.functionId(onAddCollation)),
@@ -339,8 +339,77 @@ contract VotingAuditDebotACTMmenu is Debot {
             ]);
     }
 
+/*
+    user info
+*/
+    function showUserData(uint32 index) public {
+        optional(uint256) pubkey;
+        IParticipant(m_participant).getPublishedData{
+        abiVer : 2,
+        extMsg : true,
+        sign : false,
+        pubkey : pubkey,
+        time : uint64(now),
+        expire: 0x123,
+        callbackId : tvm.functionId(SCshowUserData),
+        onErrorId : tvm.functionId(someError)
+        }();
+    }
 
+    function SCshowUserData(
+        bytes pName,
+        bytes pPhotoLink,
+        bytes pDataLink,
+        address pAddress,
+        uint128 pBalance
+    )  public {
+        Terminal.print(0,format("***USER DATA\nyour name: {}\nphoto link: {}\ndata link: {}\nyour address: {}\n balance: {}\nEND***\n",pName,pPhotoLink,pDataLink,pAddress,pBalance));
 
+        MenuItem[] m_menu;
+            m_menu.push(MenuItem("Edit user data", "", tvm.functionId(onEditUserData)));
+            m_menu.push(MenuItem("Return to menu", "", tvm.functionId(CLmenu)));
+        Menu.select("Choose: ", "",m_menu);
+    }
+
+    function onEditUserData(uint32 index) public {
+        Terminal.input(tvm.functionId(onSetName), "----\nYour name?\n\n",false);
+    }
+bytes userName;
+    function onSetName(string value) public {
+        userName = bytes(value);
+
+        Terminal.input(tvm.functionId(onAddPhotoLink), "----\nAdd your photo link:\n\n",false);
+    }
+bytes PhotoLink;
+    function onAddPhotoLink(string value) public {
+        PhotoLink = bytes(value);
+
+        Terminal.input(tvm.functionId(onAddPublishedDataLink), "----\nAdd your published data link:\n\n",false);
+    }
+bytes PublishedDataLink;
+    function onAddPublishedDataLink(string value) public {
+        PublishedDataLink = bytes(value);
+
+        Terminal.print(0,format("***** your userName: {}\n photo link: {}\n published data link: {}\n*****\n", userName,PhotoLink,PublishedDataLink));
+
+        optional(uint256) pubkey;
+        IParticipant(m_participant).publishData{
+        abiVer : 2,
+        extMsg : true,
+        sign : true,
+        pubkey : pubkey,
+        time : uint64(now),
+        expire: 0x123,
+        callbackId : 0,
+        onErrorId : tvm.functionId(someError)
+        }(userName,PhotoLink,PublishedDataLink);
+
+        CLmenu();
+    }
+
+/*
+    add collation
+*/
     function onAddCollation(uint32 index) public {
         MenuItem[] m_menu;
         for(uint8 i = 0; i < keysDeAuditDataD.length; i++){
