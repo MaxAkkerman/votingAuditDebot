@@ -1,0 +1,22 @@
+solc VA_ED.sol
+tvm_linker compile VA_ED.code --lib ../../../../../TVM/TON-Solidity-Compiler/lib/stdlib_sol.tvm
+tonos-cli genaddr VA_ED.tvc VA_ED.abi.json --genkey VA_ED.keys.json
+
+
+0:09c3abd4113d5e7b1ec4b363132cab0c1c19848ee8e2ed29ee1e3deb4a7b70cb
+
+
+debot_abi=$(cat VA_ED.abi.json | xxd -ps -c 20000)
+
+tonos-cli --url https://gql.custler.net deploy VA_ED.tvc {} --sign VA_ED.keys.json --abi VA_ED.abi.json
+
+
+
+tonos-cli --url https://gql.custler.net call 0:09c3abd4113d5e7b1ec4b363132cab0c1c19848ee8e2ed29ee1e3deb4a7b70cb setABI "{\"dabi\":\"$debot_abi\",\"ATdebotAddress\":\"0:75e125c75928eb2b3216c713cc4b04deaf4cc3dea1fe1cdcafbbfd96116fb873\"}" --sign VA_ED.keys.json --abi VA_ED.abi.json
+
+tonos-cli --url https://gql.custler.net debot fetch 0:09c3abd4113d5e7b1ec4b363132cab0c1c19848ee8e2ed29ee1e3deb4a7b70cb
+
+
+
+
+tonos-cli account 0:09c3abd4113d5e7b1ec4b363132cab0c1c19848ee8e2ed29ee1e3deb4a7b70cb

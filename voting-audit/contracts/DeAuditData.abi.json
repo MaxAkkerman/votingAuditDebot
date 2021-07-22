@@ -1,0 +1,439 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"valueMaxLength","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addCandidate",
+			"inputs": [
+				{"name":"nameCandidate","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addDistrict",
+			"inputs": [
+				{"name":"nameDistrict","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addMunicipalBody",
+			"inputs": [
+				{"name":"nameMunicipalBody","type":"bytes"},
+				{"name":"indexDistrict","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addVotingPool",
+			"inputs": [
+				{"name":"nameVotingPool","type":"bytes"},
+				{"name":"indexDistrict","type":"uint256"},
+				{"name":"indexMunicipalBody","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addVotingCenter",
+			"inputs": [
+				{"name":"nameVotingCenter","type":"bytes"},
+				{"name":"location","type":"bytes"},
+				{"name":"indexDistrict","type":"uint256"},
+				{"name":"indexMunicipalBody","type":"uint256"},
+				{"name":"indexVotingPool","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setDeAudit",
+			"inputs": [
+				{"name":"addressDeAudit","type":"address"},
+				{"name":"addressATM","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setCollation",
+			"inputs": [
+				{"name":"collator","type":"address"},
+				{"name":"indexVotingCenter","type":"uint256"},
+				{"name":"linkToCollationPhoto","type":"bytes"},
+				{"name":"voteMatrix","type":"uint256[]"},
+				{"name":"vcms","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getRandomStepsFrom",
+			"inputs": [
+				{"name":"limit","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getQtyAct4",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getStartPoint",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getNextKey",
+			"inputs": [
+				{"name":"key","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getGramsForAct4",
+			"inputs": [
+				{"name":"totalValue","type":"uint128"},
+				{"name":"qtyAct4","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint128"}
+			]
+		},
+		{
+			"name": "getLimit",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "isAct4Full",
+			"inputs": [
+				{"name":"qtyValidations","type":"uint256"},
+				{"name":"limit","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"bool"}
+			]
+		},
+		{
+			"name": "setValidationForParticipant",
+			"inputs": [
+				{"name":"participantAddr","type":"address"},
+				{"name":"qtyValidations","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "triggerToAct4",
+			"inputs": [
+				{"name":"addrAct4","type":"address"},
+				{"name":"member","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getBalance",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint128"}
+			]
+		},
+		{
+			"name": "getVotingCenter4Debot",
+			"inputs": [
+				{"name":"votingCenterCurrentKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"name4Debot","type":"bytes"},
+				{"name":"location4Debot","type":"bytes"},
+				{"name":"votes4Debot","type":"uint256[]"},
+				{"name":"idVotingPool4Debot","type":"uint256"},
+				{"name":"idMunicipalBody4Debot","type":"uint256"},
+				{"name":"idDistrict4Debot","type":"uint256"},
+				{"name":"collationStatus4Debot","type":"bool"},
+				{"name":"act4Arr4Debot","type":"address[]"},
+				{"name":"votingCenterCurrentKeyD","type":"uint256"}
+			]
+		},
+		{
+			"name": "getVotingPool4Debot",
+			"inputs": [
+				{"name":"votingPoolCurrentKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"name4Debot","type":"bytes"},
+				{"name":"votes4Debot","type":"uint256[]"},
+				{"name":"votingCentersArr4Debot","type":"uint256[]"},
+				{"name":"votingPoolCurrentKeyD","type":"uint256"}
+			]
+		},
+		{
+			"name": "getMunicipalBody4Debot",
+			"inputs": [
+				{"name":"municipalBodyCurrentKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"name4Debot","type":"bytes"},
+				{"name":"votes4Debot","type":"uint256[]"},
+				{"name":"votingCentersArr4Debot","type":"uint256[]"},
+				{"name":"votingPoolsArr4Debot","type":"uint256[]"},
+				{"name":"municipalBodyCurrentKeyD","type":"uint256"}
+			]
+		},
+		{
+			"name": "getDistrict4Debot",
+			"inputs": [
+				{"name":"districtCurrentKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"name4Debot","type":"bytes"},
+				{"name":"votes4Debot","type":"uint256[]"},
+				{"name":"votingCentersArr4Debot","type":"uint256[]"},
+				{"name":"votingPoolsArr4Debot","type":"uint256[]"},
+				{"name":"municipalBodiesArr4Debot","type":"uint256[]"},
+				{"name":"districtCurrentKeyD","type":"uint256"}
+			]
+		},
+		{
+			"name": "getCandidate4Debot",
+			"inputs": [
+				{"name":"candidateCurrentKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"name4Debot","type":"bytes"},
+				{"name":"votes4Debot","type":"uint256"},
+				{"name":"candidateCurrentKeyD","type":"uint256"}
+			]
+		},
+		{
+			"name": "idDeAuditData",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"idDeAuditData","type":"uint256"}
+			]
+		},
+		{
+			"name": "rootDeAudit",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"rootDeAudit","type":"address"}
+			]
+		},
+		{
+			"name": "initiator",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"initiator","type":"address"}
+			]
+		},
+		{
+			"name": "name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"}
+			]
+		},
+		{
+			"name": "codeAct4",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"codeAct4","type":"cell"}
+			]
+		},
+		{
+			"name": "launchedDeAudit",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"launchedDeAudit","type":"address"}
+			]
+		},
+		{
+			"name": "votingCenterForAct4",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"votingCenterForAct4","type":"map(address,uint256)"}
+			]
+		},
+		{
+			"name": "queueAct4",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"indexVC","type":"uint256"},{"name":"addressAct4","type":"address"},{"name":"validators","type":"address[]"}],"name":"queueAct4","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "countAct4",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"countAct4","type":"uint256"}
+			]
+		},
+		{
+			"name": "queueAct4Length",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"queueAct4Length","type":"uint256"}
+			]
+		},
+		{
+			"name": "countCollatedVC",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"countCollatedVC","type":"uint256"}
+			]
+		},
+		{
+			"name": "countSpointVC",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"countSpointVC","type":"uint256"}
+			]
+		},
+		{
+			"name": "labelLVA4",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"labelLVA4","type":"uint256"}
+			]
+		},
+		{
+			"name": "limitValsForCol",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"limitValsForCol","type":"uint256"}
+			]
+		},
+		{
+			"name": "votingCenter",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"location","type":"bytes"},{"name":"votes","type":"uint256[]"},{"name":"idVotingPool","type":"uint256"},{"name":"idMunicipalBody","type":"uint256"},{"name":"idDistrict","type":"uint256"},{"name":"collationStatus","type":"bool"},{"name":"act4Arr","type":"address[]"},{"name":"validatorsArr","type":"map(address,address[])"}],"name":"votingCenter","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "votingCenterKeys",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"votingCenterKeys","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "votingPool",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"votes","type":"uint256[]"},{"name":"votingCentersArr","type":"uint256[]"}],"name":"votingPool","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "votingPoolKeys",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"votingPoolKeys","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "municipalBody",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"votes","type":"uint256[]"},{"name":"votingCentersArr","type":"uint256[]"},{"name":"votingPoolsArr","type":"uint256[]"}],"name":"municipalBody","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "municipalBodyKeys",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"municipalBodyKeys","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "district",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"votes","type":"uint256[]"},{"name":"votingCentersArr","type":"uint256[]"},{"name":"votingPoolsArr","type":"uint256[]"},{"name":"municipalBodiesArr","type":"uint256[]"}],"name":"district","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "districtKeys",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"districtKeys","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "candidate",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"votes","type":"uint256"}],"name":"candidate","type":"map(uint256,tuple)"}
+			]
+		},
+		{
+			"name": "candidateKeys",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"candidateKeys","type":"uint256[]"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"idDeAuditData","type":"uint256"},
+		{"key":2,"name":"rootDeAudit","type":"address"},
+		{"key":3,"name":"initiator","type":"address"},
+		{"key":4,"name":"name","type":"bytes"},
+		{"key":5,"name":"codeAct4","type":"cell"}
+	],
+	"events": [
+	]
+}

@@ -1,0 +1,27 @@
+solc VA_EDDAD.sol
+tvm_linker compile VA_EDDAD.code --lib ../../../../TVM/TON-Solidity-Compiler/lib/stdlib_sol.tvm
+tonos-cli genaddr VA_EDDAD.tvc VA_EDDAD.abi.json --genkey VA_EDDAD.keys.json
+
+
+0:cd73b110a766c8b5c54452ad4ac4dc29c104c7da833e173e44e5335e29e3607e
+
+
+debot_abi=$(cat VA_EDDAD.abi.json | xxd -ps -c 20000)
+
+tonos-cli deploy VA_EDDAD.tvc {} --sign VA_EDDAD.keys.json --abi VA_EDDAD.abi.json
+
+
+
+tonos-cli --url https://gql.custler.net call 0:cd73b110a766c8b5c54452ad4ac4dc29c104c7da833e173e44e5335e29e3607e setABI "{\"dabi\":\"$debot_abi\"}" --sign VA_EDDAD.keys.json --abi VA_EDDAD.abi.json
+
+
+
+msig
+party blame slot armed pool various host margin rude host tube find
+
+tonos-cli --url https://gql.custler.net debot fetch 0:cd73b110a766c8b5c54452ad4ac4dc29c104c7da833e173e44e5335e29e3607e
+
+participant
+0:fbaf3b5fa2d3cd860e44774a84f1f1bd4416421b05dafc96adeae980b480ffd8
+
+grace awake quote must sugar peanut okay grant demand acoustic stuff uphold
